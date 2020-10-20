@@ -1,91 +1,147 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
 
-class Square extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state ={
-  //     value:null,
-  //   }
-  // }
-  render() {
-    return (
-        <button
-            className="square"
-            onClick={() => this.props.onClick()}>
-          {this.props.value}
-        </button>
-    );
-  }
-}
+// const element = (
+//     <div></div>
+// );
 
-class Board extends React.Component {
-  constructor(props){
-   super(props);
-   this.state = {
-     squares: Array(9).fill(null),
-   }
+
+// class Clock extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {date: new Date()}
+//   }
+//   componentDidMount() { //组件渲染到dom中后执行
+//     this.timerID = setInterval(
+//         ()=>this.tick(),
+//         1000
+//     )
+//   }
+//   componentWillUnmount() {
+//     clearInterval(this.timerID);
+//   }
+//   tick(){
+//     // this.setState({
+//     //   date:new Date()
+//     // })
+//     this.setState((state,props) =>{
+//       return {
+//         date:new Date()
+//       }
+//     })
+//   }
+//   render() {
+//     return (
+//         <div>
+//           <h1>Hello,world</h1>
+//           <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+//         </div>
+//     )
+//   }
+// }
+// const element = [1,2,3,4,5].map(number =>{
+//   return <Clock key={number}/>
+// })
+
+// class NameForm extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       name:''
+//     };
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//     this.handleChange = this.handleChange.bind(this);
+//   }
+//   handleChange(event){
+//     this.setState({
+//       name:event.target.value
+//     });
+//   }
+//   handleSubmit(event){
+//     alert('提交的名字是'+ this.state.name);
+//     event.preventDefault();
+//   }
+//   render() {
+//     return (
+//         <form onSubmit={this.handleSubmit}>
+//           <label>
+//             名字
+//             <input type="text" value={this.state.name} onChange={this.handleChange}/>
+//             {/*<input type="text" value={this.state.name} onChange={(e)=>this.handleChange(e)}/>*/}
+//           </label>
+//           <input type="submit" value="提交"/>
+//         </form>
+//     )
+//   }
+// }
+
+//留一道题  一会我希望选中之后 提交弹出 汉字
+class FlavorForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value:'count'
+    };
+    this.handleSubmit =this.handleSubmit.bind(this);
+    this.handleChange =this.handleChange.bind(this);
   }
-  handleClick(i){
-    const squares = this.state.squares.slice();
-    squares[i] = "X";
-    this.setState({squares:squares})
+  handleSubmit(event){
+    alert('你喜欢的风味是: ' + this.state.value);
+    event.preventDefault();
   }
-  renderSquare(i) {
-    return (
-        <Square
-        value={this.state.squares[i]}
-         onClick={() => this.handleClick(i)}
-        />
-    );
+  handleChange(event){
+    this.setState({
+      value:event.target.value
+    })
   }
-  
   render() {
-    const status = 'i m you father';
-    
+    const arr = [
+      {value:'grapefruit',name:'葡萄柚'},
+      {value:'lime',name:'柠檬'},
+      {value:'coconut',name:'椰子'},
+      {value:'mango',name:'芒果'}
+    ];
     return (
-        <div>
-          <div className="status">{status}</div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+        <div id='super'>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              选择你喜欢的风味
+              <select value={this.state.value} onChange={this.handleChange}>
+                {arr.map(item =>{
+                  return (
+                      <option key={item.value} value={item.value}>{item.name}</option>
+                  )
+                })}
+              </select>
+            </label>
+            <input type="submit" value="提交"/>
+          </form>
         </div>
-    );
+    )
   }
 }
 
-class Game extends React.Component {
-  render() {
-    return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-    );
-  }
-}
 
-// ========================================
+
+function App() {
+  return (
+      <div>
+      </div>
+  )
+}
 
 ReactDOM.render(
-    <Game />,
+    <App />,
     document.getElementById('root')
 );
+
+// setTimeout(function () {
+//   ReactDOM.render(<div>dddd</div>,document.getElementById('super'))
+// },5000);
+
+// ReactDOM.render(
+//     element,
+//     document.getElementById('root')
+// );
+
+
