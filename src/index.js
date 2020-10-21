@@ -1,5 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// import {themes,ThemeContext} from "./theme";
+// import ThemedButton from "./themed-button";
+// import ThemeTogglerButton from "./theme-toggler-button";
+
+
+
+
 
 // const element = (
 //     <div></div>
@@ -75,112 +82,152 @@ import ReactDOM from "react-dom";
 //   }
 // }
 
-//留一道题  一会我希望选中之后 提交弹出 汉字
-// class FlavorForm extends React.Component {
+// class Input extends React.Component{
 //   constructor(props) {
 //     super(props);
-//     this.state = {
-//       value:'count'
+//     this.handleChange = this.handleChange.bind(this);
+//   }
+//   handleChange(e){
+//     this.props.onChange(e.target.value);
+//   }
+//   render() {
+//     const name = this.props.name;
+//     return (
+//       <div>
+//         <input value={name} onChange={this.handleChange}/>
+//       </div>
+//     )
+//   }
+// }
+//
+// class Calculator  extends React.Component{
+//   constructor(props) {
+//     super(props);
+//     this.state={
+//       name:""
 //     };
-//     this.handleSubmit =this.handleSubmit.bind(this);
-//     this.handleChange =this.handleChange.bind(this);
+//     this.handleInput1 = this.handleInput1.bind(this);
+//     this.handleInput2 = this.handleInput1.bind(this);
 //   }
-//   handleSubmit(event){
-{/*    alert('你喜欢的风味是: ' + this.state.value);*/}
-//     event.preventDefault();
-//   }
-//   handleChange(event){
+//   handleInput1(value){
+//     console.log(value);
 //     this.setState({
-//       value:event.target.value
+//       name:value
+//     })
+//   }
+//   handleInput2(value){
+//     this.setState({
+//       name:value
 //     })
 //   }
 //   render() {
-//     const arr = [
-{/*      {value:'grapefruit',name:'葡萄柚'},*/}
-{/*      {value:'lime',name:'柠檬'},*/}
-{/*      {value:'coconut',name:'椰子'},*/}
-{/*      {value:'mango',name:'芒果'}*/}
-{/*    ];*/}
-{/*    return (*/}
-{/*        <div id='super'>*/}
-{/*          <form onSubmit={this.handleSubmit}>*/}
-{/*            <label>*/}
-//               选择你喜欢的风味
-//               <select value={this.state.value} onChange={this.handleChange}>
-//                 {arr.map(item =>{
-//                   return (
-//                       <option key={item.value} value={item.value}>{item.name}</option>
-//                   )
-//                 })}
-//               </select>
-//             </label>
-//             <input type="submit" value="提交"/>
-//           </form>
-//         </div>
+//     return (
+//       <div>
+//         <Input name={this.state.name} onChange={this.handleInput1}></Input>
+//         <Input name={this.state.name} onChange={this.handleInput2}></Input>
+//       </div>
 //     )
 //   }
 // }
 
+//这里面没有里理解 这个默认值的作用
+// const ThemeContext = React.createContext('light');
+// function Toolbar(){
+//   return (
+//       <div>
+//         {/*<ThemeContext.Provider value="dark">*/}
+//           <ThemedButton></ThemedButton>
+//         {/*</ThemeContext.Provider>*/}
+//       </div>
+//   )
+// }
+//
+// class ThemedButton extends React.Component {
+//   static contextType = ThemeContext;
+//   render() {
+//     return (
+//         <div>
+//           {this.context}
+//         </div>
+//     )
+//   }
+// }
+//
+//
+// function App(){
+//   return (
+//       <div>
+//         <Toolbar></Toolbar>
+//       </div>
+//   )
+// }
 
-class Input extends React.Component{
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(e){
-    this.props.onChange(e.target.value);
-  }
-  render() {
-    const name = this.props.name;
-    return (
-      <div>
-        <input value={name} onChange={this.handleChange}/>
-      </div>
-    )
-  }
-}
-
-class Calculator  extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state={
-      name:""
-    };
-    this.handleInput1 = this.handleInput1.bind(this);
-    this.handleInput2 = this.handleInput1.bind(this);
-  }
-  handleInput1(value){
-    console.log(value);
-    this.setState({
-      name:value
-    })
-  }
-  handleInput2(value){
-    this.setState({
-      name:value
-    })
-  }
-  render() {
-    return (
-      <div>
-        <Input name={this.state.name} onChange={this.handleInput1}></Input>
-        <Input name={this.state.name} onChange={this.handleInput2}></Input>
-      </div>
-    )
-  }
-}
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     this.toggleTheme = () => {
+//       this.setState(state => ({
+//         theme:
+//             state.theme === themes.dark
+//                 ? themes.light
+//                 : themes.dark,
+//       }));
+//     };
+//
+//     // State 也包含了更新函数，因此它会被传递进 context provider。
+//     this.state = {
+//       theme: themes.light,
+//       toggleTheme: this.toggleTheme,
+//     };
+//   }
+//
+//   render() {
+//     // 整个 state 都被传递进 provider
+//     return (
+//         <ThemeContext.Provider value={this.state}>
+//           <Content />
+//         </ThemeContext.Provider>
+//     );
+//   }
+// }
+//
+// function Content() {
+//   return (
+//       <div>
+//         <ThemeTogglerButton />
+//       </div>
+//   );
+// }
 
 
+// const FancyButton = React.forwardRef((props,ref) =>{
+//   console.log(ref);
+//   return (
+//       <button ref={ref} className="FancyButton">
+//         {props.children}
+//       </button>
+//   )
+// });
+//
+// const ref = React.createRef();
 
-
-
+//React.Fragment  相当于 template 这么一个东西
 function App() {
   return (
-      <div>
-        <Calculator></Calculator>
-      </div>
+      <>
+        <div>
+          dsad
+        </div>
+        <div>
+          <FancyButton ref={ref}>click me</FancyButton>
+        </div>
+      </>
+      
   )
 }
+
+
 
 ReactDOM.render(
     <App />,
