@@ -12,6 +12,7 @@ function ThemeTogglerButton() {
         
       </ThemeContext.Consumer>
   )
+  
 }
 
 export default ThemeTogglerButton;

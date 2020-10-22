@@ -3,6 +3,7 @@ import {ThemeContext} from "./theme";
 
 
 class ThemedButton extends React.Component {
+  static contextType = ThemeContext;
   render() {
     let props = this.props;
     let theme = this.context;
@@ -12,6 +13,6 @@ class ThemedButton extends React.Component {
   }
 }
 
-ThemedButton.contextType = ThemeContext;
+// ThemedButton.contextType = ThemeContext;
 
 export default ThemedButton;

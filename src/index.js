@@ -1,246 +1,122 @@
-import React from "react";
-import ReactDOM from "react-dom";
-// import {themes,ThemeContext} from "./theme";
-// import ThemedButton from "./themed-button";
-// import ThemeTogglerButton from "./theme-toggler-button";
+import React, {useState} from "react";
+import ReactDOM from 'react-dom'
+import './index.css';
 
-
-
-
-
-// const element = (
-//     <div></div>
-// );
-
-
-// class Clock extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {date: new Date()}
-//   }
-//   componentDidMount() { //组件渲染到dom中后执行
-//     this.timerID = setInterval(
-//         ()=>this.tick(),
-//         1000
-//     )
-//   }
-//   componentWillUnmount() {
-//     clearInterval(this.timerID);
-//   }
-//   tick(){
-//     // this.setState({
-//     //   date:new Date()
-//     // })
-//     this.setState((state,props) =>{
-//       return {
-//         date:new Date()
-//       }
-//     })
-//   }
-//   render() {
-//     return (
-//         <div>
-//           <h1>Hello,world</h1>
-//           <h2>It is {this.state.date.toLocaleTimeString()}</h2>
-//         </div>
-//     )
-//   }
-// }
-// const element = [1,2,3,4,5].map(number =>{
-//   return <Clock key={number}/>
-// })
-
-// class NameForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       name:''
-//     };
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-//   handleChange(event){
-//     this.setState({
-//       name:event.target.value
-//     });
-//   }
-//   handleSubmit(event){
-//     alert('提交的名字是'+ this.state.name);
-//     event.preventDefault();
-//   }
-//   render() {
-//     return (
-//         <form onSubmit={this.handleSubmit}>
-//           <label>
-//             名字
-//             <input type="text" value={this.state.name} onChange={this.handleChange}/>
-//             {/*<input type="text" value={this.state.name} onChange={(e)=>this.handleChange(e)}/>*/}
-//           </label>
-//           <input type="submit" value="提交"/>
-//         </form>
-//     )
-//   }
-// }
-
-// class Input extends React.Component{
-//   constructor(props) {
-//     super(props);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-//   handleChange(e){
-//     this.props.onChange(e.target.value);
-//   }
-//   render() {
-//     const name = this.props.name;
-//     return (
-//       <div>
-//         <input value={name} onChange={this.handleChange}/>
-//       </div>
-//     )
-//   }
-// }
-//
-// class Calculator  extends React.Component{
-//   constructor(props) {
-//     super(props);
-//     this.state={
-//       name:""
-//     };
-//     this.handleInput1 = this.handleInput1.bind(this);
-//     this.handleInput2 = this.handleInput1.bind(this);
-//   }
-//   handleInput1(value){
-//     console.log(value);
-//     this.setState({
-//       name:value
-//     })
-//   }
-//   handleInput2(value){
-//     this.setState({
-//       name:value
-//     })
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <Input name={this.state.name} onChange={this.handleInput1}></Input>
-//         <Input name={this.state.name} onChange={this.handleInput2}></Input>
-//       </div>
-//     )
-//   }
-// }
-
-//这里面没有里理解 这个默认值的作用
-// const ThemeContext = React.createContext('light');
-// function Toolbar(){
-//   return (
-//       <div>
-//         {/*<ThemeContext.Provider value="dark">*/}
-//           <ThemedButton></ThemedButton>
-//         {/*</ThemeContext.Provider>*/}
-//       </div>
-//   )
-// }
-//
-// class ThemedButton extends React.Component {
-//   static contextType = ThemeContext;
-//   render() {
-//     return (
-//         <div>
-//           {this.context}
-//         </div>
-//     )
-//   }
-// }
-//
-//
-// function App(){
-//   return (
-//       <div>
-//         <Toolbar></Toolbar>
-//       </div>
-//   )
-// }
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.toggleTheme = () => {
-//       this.setState(state => ({
-//         theme:
-//             state.theme === themes.dark
-//                 ? themes.light
-//                 : themes.dark,
-//       }));
-//     };
-//
-//     // State 也包含了更新函数，因此它会被传递进 context provider。
-//     this.state = {
-//       theme: themes.light,
-//       toggleTheme: this.toggleTheme,
-//     };
-//   }
-//
-//   render() {
-//     // 整个 state 都被传递进 provider
-//     return (
-//         <ThemeContext.Provider value={this.state}>
-//           <Content />
-//         </ThemeContext.Provider>
-//     );
-//   }
-// }
-//
-// function Content() {
-//   return (
-//       <div>
-//         <ThemeTogglerButton />
-//       </div>
-//   );
-// }
-
-
-// const FancyButton = React.forwardRef((props,ref) =>{
-//   console.log(ref);
-//   return (
-//       <button ref={ref} className="FancyButton">
-//         {props.children}
-//       </button>
-//   )
-// });
-//
-// const ref = React.createRef();
-
-//React.Fragment  相当于 template 这么一个东西
-function App() {
+function Square(props) {
   return (
-      <>
-        <div>
-          dsad
+      <button className="square"
+              onClick={() => (props.onClick())}
+      >
+        {props.value}
+      </button>
+  )
+}
+
+function Board() {
+  const [stateArr,setStateArr] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
+  
+  const winner = calculateWinner(stateArr);
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = `Next player: ${xIsNext?'X':'O'}`;
+  }
+  
+  function handleClick(i) {
+    const state = stateArr.slice();
+    if (calculateWinner(state) || state[i]) {
+      return;
+    }
+    if(xIsNext){
+      setXIsNext(false);
+      state[i] = "X";
+    }else{
+      setXIsNext(true);
+      state[i] = "O";
+    }
+    setStateArr(state);
+  }
+  function renderSquare(i) {
+    return (
+        <Square
+        value={stateArr[i]}
+        onClick={() => (handleClick(i))}
+        >
+        </Square>
+    )
+  }
+  return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
         </div>
-        <div>
-          <FancyButton ref={ref}>click me</FancyButton>
+        <div className="board-row">
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
         </div>
-      </>
-      
+        <div className="board-row">
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </div>
+      </div>
+  )
+}
+
+function Game() {
+  return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
   )
 }
 
 
+
+function App(){
+  return (
+      <div>
+        <Game />
+      </div>
+  )
+}
+
+// ========================================
 
 ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
 
-// setTimeout(function () {
-//   ReactDOM.render(<div>dddd</div>,document.getElementById('super'))
-// },5000);
 
-// ReactDOM.render(
-//     element,
-//     document.getElementById('root')
-// );
-
-
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
