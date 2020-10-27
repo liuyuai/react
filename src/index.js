@@ -1,122 +1,64 @@
-import React, {useState} from "react";
-import ReactDOM from 'react-dom'
-import './index.css';
-
-function Square(props) {
-  return (
-      <button className="square"
-              onClick={() => (props.onClick())}
-      >
-        {props.value}
-      </button>
-  )
-}
-
-function Board() {
-  const [stateArr,setStateArr] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-  
-  const winner = calculateWinner(stateArr);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = `Next player: ${xIsNext?'X':'O'}`;
-  }
-  
-  function handleClick(i) {
-    const state = stateArr.slice();
-    if (calculateWinner(state) || state[i]) {
-      return;
-    }
-    if(xIsNext){
-      setXIsNext(false);
-      state[i] = "X";
-    }else{
-      setXIsNext(true);
-      state[i] = "O";
-    }
-    setStateArr(state);
-  }
-  function renderSquare(i) {
-    return (
-        <Square
-        value={stateArr[i]}
-        onClick={() => (handleClick(i))}
-        >
-        </Square>
-    )
-  }
-  return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {renderSquare(0)}
-          {renderSquare(1)}
-          {renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {renderSquare(3)}
-          {renderSquare(4)}
-          {renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {renderSquare(6)}
-          {renderSquare(7)}
-          {renderSquare(8)}
-        </div>
-      </div>
-  )
-}
-
-function Game() {
-  return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
-      </div>
-  )
-}
+import React from "react";
+import { configureStore } from '@reduxjs/toolkit'
+import {createStore} from "redux";
 
 
+const initialState = { value: 0 };
 
-function App(){
-  return (
-      <div>
-        <Game />
-      </div>
-  )
-}
-
-// ========================================
-
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
-
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+function counterReducer(state = initialState, action) {
+  // Check to see if the reducer cares about this action
+  if (action.type === 'counter/increment') {
+    return {
+      ...state,
+      value: state.value + 1
     }
   }
-  return null;
+  return state
 }
+
+const store = configureStore({reducer:counterReducer})
+
+console.log(store.getState());
+
+const increment = () =>{
+  return {
+    type: 'counter/increment'
+  }
+}
+
+store.dispatch(increment());
+
+//这一步就是做了一个 对象中的属性筛选
+console.log(store.getState());
+
+const selectCounterValue = state => state.value;
+const CounterValue = selectCounterValue(store.getState());
+
+console.log(CounterValue);
+
+
+
+
+
+
+// function counter(state = 0, action) {
+//   switch (action.type) {
+//     case 'INCREMENT':
+//       return state + 1
+//     case 'DECREMENT':
+//       return state - 1
+//     default:
+//       return state
+//   }
+// }
+//
+// let store = createStore(counter);
+//
+//
+// store.subscribe(() => console.log(store.getState()));
+//
+// store.dispatch({ type: 'INCREMENT' });
+// // 1
+// store.dispatch({ type: 'INCREMENT' });
+// // 2
+// store.dispatch({ type: 'DECREMENT' });
