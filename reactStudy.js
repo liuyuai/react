@@ -41,5 +41,12 @@
 *
 *
 *
+* thunk middleware
+* have some use rules
+*
+* add 'start'  async request   add 'success'  complete this action
+*
+* add selectors when you find this code need be used to some pieces
+*
 *
 * **/
