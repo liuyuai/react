@@ -8,6 +8,8 @@ import {
   RestSerializer,
 } from 'miragejs'
 
+//mock函数
+
 import { nanoid } from '@reduxjs/toolkit'
 
 import faker from 'faker'
@@ -65,7 +67,7 @@ const notificationTemplates = [
 new Server({
   routes() {
     this.namespace = 'fakeApi'
-    //this.timing = 2000
+    // this.timing = 0
 
     this.resource('users')
     this.resource('posts')

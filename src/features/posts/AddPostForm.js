@@ -1,31 +1,48 @@
 import React, { useState }  from "react";
 import { useDispatch, useSelector} from "react-redux";
+import { unwrapResult} from "@reduxjs/toolkit";
 
-import {postAdded} from "./postsSlice";
+import {postAdded, addNewPost} from "./postsSlice";
+
 
 
 export const AddPostForm = () =>{
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [userId, setuserId] = useState('');
+  const [userId, setUserId] = useState('');
+  const [addRequestStatus, setAddRequestStatus] = useState('idle');
   
   const dispatch = useDispatch();
   
   const users = useSelector(state => state.users);
   
-  const onAuthorChanged = (e) => setuserId(e.target.value);
+  const onAuthorChanged = (e) => setUserId(e.target.value);
   const onTittleChange = (e) => setTitle(e.target.value);
   const onContentChange = (e) => setContent(e.target.value);
   
-  const onSavePostClicked  = () =>{
-    if(title&&content){
-      dispatch(postAdded(title,content,userId))
-      setTitle('');
-      setContent('');
+  const canSave = [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
+  
+  const onSavePostClicked  = async () =>{
+    if(canSave){
+      try{
+        setAddRequestStatus('pending');
+        const resultAction = await dispatch(
+            addNewPost({ title, content, user: userId })
+        );
+        unwrapResult(resultAction);//这个函数需要去理解
+        setTitle('');
+        setContent('');
+        setUserId('');
+      }catch (e) {
+        console.error('Failed to save the post: ', e)
+      }finally {
+        setAddRequestStatus('idle')
+      }
     }
   };
   
-  const canSave = title&&content&&userId;
+  
+  
   const usersOptions = users.map(user =>(
       <option key={user.id} value={user.id}>
         {user.name}
