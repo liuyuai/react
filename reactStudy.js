@@ -49,4 +49,35 @@
 * add selectors when you find this code need be used to some pieces
 *
 *
+*  when I used the dispatch  what happened ,
+*  and  its parameter  is a object or a  thunk function .
+*   middleware  always be used before the dispatch and it used typeof action === 'function'
+*
+*
+*
+* memoize selector
+*
+* optimize performance
+*
+*  I have learn the react,redux and react-router, now I need use these set up my own project.
+*
+*
+*
+*
+*
 * **/
+
+/*                          sharp tools make good work
+*                              glossary of term
+*  SPA  is   single-page application
+*  compiler
+*  Bundler
+*  package   control tool
+*  CDN  content delivery network
+*  HOC higher order component
+*  SSR server side render
+*
+*
+* **/
+
+
