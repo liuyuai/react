@@ -78,6 +78,64 @@
 *  SSR server side render
 *
 *
+*
 * **/
 
 
+//  Advanced guide
+/*
+*   一、Code-Splitting
+*   1. React.lazy(()=>import('./address'));
+*   2. use React-router with  React.lazy  can make the  lazy-load
+*   3. is a way for optimize performance
+*
+*   二、Context is  mean : “上下文”
+*   step-by-step
+*   1. use  const MyContext = React.createContext('default');
+*   2. use JSX      <MyContext.Provider value={'come value if not have value  while use default'}  />
+*   3. in its child  components inside
+*      1. in class component   static contextType = MyContext;  can receive current value
+*      2. in  function component  had added the useContext  Hook this API
+*         we can    const aa = useContext(MyContext);  receive current value;
+*     3.<MyContext.Customer /> also can used
+*
+*   三、Error Boundaries
+*     Only class component can be error boundaries
+*
+*   Component Stack Trace
+*
+*   四、forward Ref
+*     React.createRef API  call this to create ref, in component above  we need to  add 'ref' prop
+*     component must be created  by React.forwardRef( (props,ref)=>{} );
+*     accept an function has two parameters. only used React.forwardRef wo can receive ref this is like 'key'prop
+*     is have specially handle;
+*
+*     use ref  we can accessing their DOM node to manage focus, selected, or animation;
+*
+*     useRef is a Hook   const inputEl = useHook(initialValue);
+*     <input ref={inputEl} />
+*     used  inputEl.current can accessing DOM
+*
+*   五、 Fragments
+*    In my knowledge  is contain  multiple elements and don't have any side-effect
+*    Because React allow the component only return one node
+*   <React.Fragment></React.Fragment>  can use  'key'prop
+*    the short syntax
+*   <></>  don't accept any attribute or key
+*
+*   六、  HOC  higher-order component
+* 
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+* **/
