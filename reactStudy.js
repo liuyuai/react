@@ -124,6 +124,41 @@
 *   <></>  don't accept any attribute or key
 *
 *   六、  HOC  higher-order component
+*     is not syntax, is a common design pattern
+*     This is a function that can accept component as parameter, return new component
+*     Usually it is used on encapsulate the common logic;
+*
+*  七、Integrating with Other libraries
+*   Because ReactDOM.render() is flexibility, it can be embedded in any application
+*
+*   八、 JSX in depth
+*     JSX is the react syntactic sugar  all JSX will be converted by React.createElement()
+*     React.createElement() pass  three parameter  below code
+*     React.createElement(
+*      'component',   also is a tag
+*       {attribute},
+*       child
+*     )
+*     inside React diff, React will used  'key' and  'component' is equal to notify current component whether to update
+*
+*     User-Defined component the first letter must capitalized ,
+*     the lowercase letter will be compile to HTML tag
+*
+*     spread attribute: use ... can pass object to child props
+*
+*
+*
+*
+*
+*
+*
+*
+*    API  REFERENCE
+*
+*   synthetic event
+*
+*
+*
 * 
 *
 *
