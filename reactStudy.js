@@ -146,6 +146,27 @@
 *
 *     spread attribute: use ... can pass object to child props
 *
+*   九、Optimize Performance
+*    use the Production build  on the online
+*    use the development in normal
+*
+*     use the chrome devtool performance and  profile to  watch the component mount
+*
+*     Virtualize longer lists
+*
+*     we can using a technique known as "windowing" means "虚拟滚动"
+*     avoid reconciliation
+*
+*   十、 Portals
+*    ReactDOM.createPortal(child,container)
+*     first argument 'child'  is  a React element
+*     container  is an actual DOM node
+*
+*   this provide one method, can take you render child  outside its parent component
+*
+*
+*
+*
 *
 *
 *
@@ -156,6 +177,10 @@
 *    API  REFERENCE
 *
 *   synthetic event
+*
+*   yesterday I want to see article,  listen a new message.
+*   in the React 16,  if you want to you the event.target, you need call e.persist() hold current target in  async.
+*   bu in React 17,  had removed the event pooling, and add event in the  root node;
 *
 *
 *
