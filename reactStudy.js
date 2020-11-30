@@ -164,6 +164,39 @@
 *
 *   this provide one method, can take you render child  outside its parent component
 *
+*   十一、Profiler
+*    React provide a  Component, can be measured the its child cost of rendering;
+*    Its purpose is to help you identify which part is slow;
+*
+*    <Profiler id='Id', onRender={callback}> require two props,
+*     Id is string  to tell you who is who;
+*     onRender is called on the  a component within the tree  'commit' an update;
+*
+*   十二、React without ES6
+*    boilerplate  code like : in  class component  constructor  we can  this.handle = this.handle.bind(this)
+*
+*   Main  introduce the createReactClass require('create-react-class');
+*   inside  we can you the  mixin;
+*    Mixin  is  important to know  React and Vue difference
+*
+*   十三、 React without JSX
+*   this part like the  八、JSX in depth
+*    describe  we can use  createElement this method
+*    It introduce a shorthand
+*    const e = React.createElement;
+*    ReactDOM.render(
+*    e('div'，null,'Hello World'),
+*     document.getElementById('root');
+*    )
+*   十四、Reconciliation
+*    Motivation
+*
+*    React if used  ‘the state of the art algorithm’ is find the minimum number of operation to transform between new and old
+*    use this algorithm  will be  O(n^3)  n is the React element in whole app;
+*
+*    So  React use the Diffing algorithm
+*    I think  it used  type and key to compare whether is equal
+*
 *
 *
 *
@@ -199,3 +232,4 @@
 *
 *
 * **/
+
