@@ -107,6 +107,15 @@
 *   四、forward Ref
 *     React.createRef API  call this to create ref, in component above  we need to  add 'ref' prop
 *     component must be created  by React.forwardRef( (props,ref)=>{} );
+*     For example:
+*     const FancyBtn = React.forward((props,ref) =>{
+*       <button ref={ref} className='FancyBtn' >
+*       {props.child}
+*        <button>
+*     })
+*     const ref = React.createRef();
+*     <FancyBtn ref={ref}>click me!</FancyBtn>
+*
 *     accept an function has two parameters. only used React.forwardRef wo can receive ref this is like 'key'prop
 *     is have specially handle;
 *
@@ -196,6 +205,26 @@
 *
 *    So  React use the Diffing algorithm
 *    I think  it used  type and key to compare whether is equal
+*
+*
+*    十五、Refs and the DOM
+*     this article is different to  forward ref
+*
+*     this part main to tell you, ref is usually used in class component
+*     In the constructor, you can use the React.createRef()，and use its instance by React.createRef created;
+*     for example:  const ref = React.createRef();   ref.current to access that node;
+*
+*     use Ref in Function component
+*     wo can't use the ref attribute on the function components,because they don't have instance
+*     you can use the ref attribute inside function components, we can use useRef this Hook function
+*     we should guarantee  ref be used on DOM element or class component
+*
+*
+*
+*
+*
+*
+*
 *
 *
 *
