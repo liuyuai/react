@@ -219,6 +219,44 @@
 *     you can use the ref attribute inside function components, we can use useRef this Hook function
 *     we should guarantee  ref be used on DOM element or class component
 *
+*    十六、 Render Props
+*      Cross-Cutting concern mean ‘关注横切点’
+*      render attribute  is return a function
+*      In official, a render prop is a function prop that a component uses to know what to render;
+*      In actually, the render Prop is like add a function for prop, in nest component  we can access this obj attribute
+*
+*      PrueComponent
+*
+*     十七、Static Type Checking
+*       1.Flow
+*           If you use the javascript, you can use the Flow library, and the if you use 'create-react-app' command to
+*         building your project.  you don't care about how to cleanup it in production bundle;
+*         it's special  syntax is  Flow annotation
+*         we need add "// @flow" on top the file
+*
+*       TypeScript
+*       we can used this Type language, is have itself's static type checking;
+*       It is a  Typed superset of JavaScript
+*
+*
+*     十八、Strict Mode            dynamic is a word
+*
+*       The Strict Mode is only on the development.
+*
+*        we can use it  like  <React.StrictMode>  <React.StrictMode>
+*        is will check its descendants
+*        StrictMode currently helping with 5 part
+*
+*        1.identifying unsafe lifecycle
+*        2.Warning about legacy String ref API usage
+*        3.Waring about deprecate findDOMNode usage
+*        4.detecting unexpected side effect
+*        5. detecting legacy context ApI
+*
+*
+*
+*
+*
 *
 *
 *
