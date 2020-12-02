@@ -253,6 +253,33 @@
 *        4.detecting unexpected side effect
 *        5. detecting legacy context ApI
 *
+*     十九、 TypeChecking With PropTypes
+*       Since React 15.5, PropType is not built-in;
+*       You can use it by the  import PropType from  'prop-types'
+*       is just a object ,inside you can set some   default value;
+*
+*       Have some different between  Chinese Docs and English Docs
+*       In English have the additional content
+*       It introduce the PropType be used in function component
+*       For example:
+*       import PropTypes from 'prop-types'
+*
+*       function  HelloWorldComponent({name}){
+*         return (
+*             <div>Hello,{name}div
+*         )
+*       }
+*
+*       HelloWorldComponent.propTypes = {
+*          name:PropTypes.string   // check the name is whether String type
+*       }
+*       HelloWorldComponent.defaultProps={
+*          name:'anything'
+*       }
+*
+*
+*
+*
 *
 *
 *
