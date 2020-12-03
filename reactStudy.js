@@ -78,6 +78,10 @@
 *  SSR server side render
 *  DevOps  development  Operation :  process method and system
 *
+*  SnapShot(快照技术，ps is really technique):this is a specially version in you store(git,svn);
+*
+*  camelCased  驼峰
+*
 *
 *
 * **/
@@ -102,6 +106,8 @@
 *
 *   三、Error Boundaries
 *     Only class component can be error boundaries
+*     if an class component defines  either(or both) the lifecycle methods
+*     static getDerivedStateFromError() or  componentDidCatch()  is considered  Error Boundary
 *
 *   Component Stack Trace
 *
@@ -348,6 +354,91 @@
 *      this is  a way to loaded dynamically
 *
 *     const SomeComponent = React.lazy(()=> import('./SomeComponent'))
+*
+*
+*     二、  React.Component
+*      this article describe the LifeCycle
+*
+*       1.Mounting:  when an instance of a component is being created and inserted into the DOM
+*         constructor()
+*         static getDerivedStateFromProps()
+*         render()
+*         componentDidMount()
+*
+*       2.Updating:  when a component is being re-rendered
+*          static getDerivedStateFromProps
+*          shouldComponentUpdate     instance is created by React.PureComponent
+*          render()
+*          getSnapshotBeforeUpdate
+*          componentDidUpdate
+*
+*        3.Unmounting:  when a component is being removed DOM
+*           componentWillUnmout
+*
+*        4.Error Handling:  when there is an error during rendering, in lifecycle method,
+*                           or in the constructor of any child component
+*
+*          static getDerivedStateFromError
+*          componentDidCatch()
+*
+*         5. Other APIs
+*             setState()    forceUpdate()
+*
+*            Class Properties
+*              defaultProps
+*              displayName
+*
+*            Instance Properties
+*               props
+*               state
+*
+*     三、LifeCycle
+*           => mean 'cause';  -> mean 'next phase' ; update UI mean '(react update dom and ref)';
+*         1.common LifeCycle
+*          mounting:  constructor -> render -> update UI ->  componentDidMount
+*          update:  (new state,new props)=>render -> update UI -> componentDidUpdate
+*          unmounted:  componentWillUnmount
+*
+*         2.less common LifeCycle
+*           mounting:  constructor -> getDerivedStateFormProps -> render -> update UI ->componentDidMount
+*           update:  (news state,new prop)=>getDerivedStateFormProps->shouldComponentUpdate->
+*                     render -> getSnapshotBeforeUpdate -> update UI -> componentDidUpdate
+*          unmounted: componentWillUnmount
+*
+*          3. in Function Component useEffect instead
+*             useEffect  contain componentDidMount,componentDidUpdate and componentWillUnmount
+*             subscribe be created in useEffect and  return a function to  cancel subscribe
+*
+*     四、ReactDOM
+*          render()
+*          hydrate()
+*          unmountComponentAtNode()
+*          findDOMNode()    to attach a ref to the DOM node and avoid using findDOMNode at all.
+*          createPortal()     outside its parents, and  render current element  in any container
+*
+*     五、ReactDOMServer
+*
+*
+*
+*
+*     六、DOM element
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
 *
 *
 *
