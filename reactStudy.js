@@ -76,6 +76,7 @@
 *  CDN  content delivery network
 *  HOC higher order component
 *  SSR server side render
+*  DevOps  development  Operation :  process method and system
 *
 *
 *
@@ -276,6 +277,77 @@
 *       HelloWorldComponent.defaultProps={
 *          name:'anything'
 *       }
+*       In above code,I think this pattern really same the object.propType;
+*
+*
+*      二十、Uncontrolled Components and  Controlled Components
+*
+*      In froms, the from element's state be controlled by React, is a Controlled Components
+*      Either, the from element's state be controlled by itself. it means Uncontrolled Components
+*
+*      Uncontrolled Components: you can use the  'useRef' to get DOM node; then use the this.ref.current.prop to do something
+*
+*      Controlled Components: you can use the 'useState' to create state, and set the element(dom or react) to use it.
+*
+*       <input type="file" />  is always a Uncontrolled Components. use the ref to access it.
+*
+*    二十一、 Web Components
+*     web provide a method to create your custom element.
+*     this can explain  we can  add a value prop above <textarea value={state}>
+      and a lots of third-party UI  use this.
+*
+*
+*
+*
+*
+* **/
+
+
+
+
+
+/*
+* *    API  REFERENCE
+*
+*   一、React and  React.Component
+*     1.React.component
+*     2.React.PurComponent    this can implement shouldComponentUpdate() with a shallow prop and state comparison.
+*       shouldComponentUpdate() skip the prop update for whole component subtree
+*
+*     3.React.memo   memory
+*      this is a HOC;
+*      give the same prop, and return same result.  React will skip rendering phase, and return the last result.
+*       inside React.memo  use the useState or useContext  it still rerender。
+*
+*      React.memo(function MyComponent(){},comparison)
+*      first argument is component,second argument is a comparison method.
+*
+*     4.createElement
+*
+*
+*     5.cloneElement
+*
+*     6.createFactory (legacy)
+*
+*     7. React.isValidElement(obj)
+*       Verifies the object is a  React element. return 'true' or 'false'
+*
+*     7.React.Children
+*         React.Children.map
+*         React.Children.forEach
+*         React.Children.count
+*         React.Children.only
+*         React.Children.toArray
+*
+*      8. React.Fragment
+*
+*      9.React.createRef
+*     10.React.forwardRef
+*
+*     11.React.lazy
+*      this is  a way to loaded dynamically
+*
+*     const SomeComponent = React.lazy(()=> import('./SomeComponent'))
 *
 *
 *
@@ -293,15 +365,6 @@
 *
 *
 *
-*
-*
-*
-*
-*
-*
-*
-*
-*    API  REFERENCE
 *
 *   synthetic event
 *
@@ -311,18 +374,17 @@
 *
 *
 *
-* 
 *
+* **/
+
+
+/*   Optimized Performance
 *
-*
-*
-*
-*
-*
-*
-*
-*
-*
+*     mainly
+*     1. language itself  have some method to improve
+*     2. webpack  bundler(打包工具)   tree-shaking
+*     3. HTTP 协议    in HTTP2.0  his  header is binary  less code
+*     4.cdn 服务器
 *
 *
 * **/
