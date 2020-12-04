@@ -82,6 +82,8 @@
 *
 *  camelCased  驼峰
 *
+*   Gradual Adoption Strategy
+*
 *
 *
 * **/
@@ -424,6 +426,31 @@
 *     六、DOM element
 *
 *
+*     七、synthetic event
+*
+*         yesterday I want to see article,  listen a new message.
+*         in the React 16,  if you want to you the event.target, you need call e.persist() hold current target in  async.
+*         bu in React 17,  had removed the event pooling, and add event in the  root node;
+*
+*      八、Test Utilities
+*       in the  'react-dom/test-utils'  have the ReactTestUtils, it will help you easy to complete test working with
+*        third-party library.  （配合第三方插件进行 单元测试)
+*
+*        the  Jest library  is used in  FaceBook;
+*        the Simulate library is used, and React understand it;
+*
+*       九、Test Renderer
+*
+*         in 'react-test-renderer' package, it can easy to grab a snapshot.
+*
+*       十、javaScript environment
+*           React 16  depend on  the  ES6  Map and Set, if you want to used in older browser,
+*        you need use a global polyfill  such as core-js.
+*
+*
+*      Hook
+*
+*         Hook
 *
 *
 *
@@ -457,11 +484,15 @@
 *
 *
 *
-*   synthetic event
 *
-*   yesterday I want to see article,  listen a new message.
-*   in the React 16,  if you want to you the event.target, you need call e.persist() hold current target in  async.
-*   bu in React 17,  had removed the event pooling, and add event in the  root node;
+*
+*
+*
+*
+*
+*
+*
+
 *
 *
 *
