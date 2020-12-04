@@ -450,7 +450,42 @@
 *
 *      Hook
 *
-*         Hook
+*       一、Introducing Hooks
+*         Q:why we use Hook and what is motivation and Hook can do what
+*          1.class component want to reuse stateful logic, need to use pattern(like 'render prop','HOC')
+*            Hooks allow you to reuse stateful logic without changing your component hierarchy.
+*            (PS: use the 'render prop' or HOC can re-structure)
+*          2. complex components become hard to understand
+*             HooK let you split one component into smaller function based on what piece of related
+*
+*          3. learning React class component is hard, in class component you need complete understand 'this'
+*           Hooks let you use more of React feature without class
+*
+*          4.Gradual adoption strategy
+*
+*        二、Hooks at a Glance
+*             1.useState
+*
+*             2.useEffect
+*                the useEffect  equal  the componentDidMount,componentDidUpdate,componentWillUnmount
+*                By default, React runs the effect after every render (include first render).
+*
+*                in useEffect you can return a function to 'clean up'
+*
+*             3.Rules of Hooks
+*                1.call Hooks at the top level. Don't call hooks inside loops,conditions,or nest function.
+*                2.Only call Hooks from React function component. don't in javascript function.
+*                   the first upperCase letter named component is React component.
+*                   the prefix  is 'use',eg: useDoSomething   this is  custom Hook. (can use Hook)
+*
+*                   !!!!!!!!!!!    I think this have a specially compile, to differ the function and custom Hook
+*
+*
+*             4.Building your own Hooks
+*
+*
+*
+*
 *
 *
 *
