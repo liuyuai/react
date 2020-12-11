@@ -483,6 +483,78 @@
 *
 *             4.Building your own Hooks
 *
+*         三、Using the State Hook
+*          introduce: Hooks are function that let you 'Hook into' React feature from function component
+*
+*            e.g.: const [state, setState] = useState(0);
+*
+*            Use the Hook like useState in function component is different to use this.setState in class component,
+*         useState is  replace, convert, transform
+*         this.setState is Merge
+*
+*         四、Using the Effect Hook
+*
+*            useEffect Hook as componentDidMount,componentDidUpdate adn componentWillUnmount combined.
+*
+*            There are two common kinds fo side effects:
+*               1. need to cleanup
+*                 (e.g.:like progress plugin:NProgress, we need call NProgress.done(),and return NProgress.start() to destructure ).
+*
+*               2. Effect without cleanup
+*                 such as: Network request, manual DOM mutation, logging.
+*
+*             Hook let us split the code based on what it is doing rather than a lifecycle method name;
+*
+*             By default, useEffect clean up the previous effect before applying the next effect.
+*             This behavior ensure you can prevent bug that in class Component due to missing update logic.
+*              running useEffect until after the browser has painted,so doing extra work is less of a problem
+*
+*
+*            Remap:
+*                 1. automatically clean up previous effect then run current effect
+*                 2. only code one,it include  'componentDidMount','componentDidUpdate','componentWillUnmount'
+*                 3. related code closer together, looking more clear.
+*                 4. use multiple useEffect to separate effects by their purpose.
+*
+*              五、Rule of Hooks
+*                1.call Hooks at the top level. Don't call hooks inside loops,conditions,or nest function.
+*                  Because the React rely on the order in which Hooks are called.
+*                2. use Hook in React function components or in custom Hook.
+*
+*              六、Building Your Own Hooks
+*                  In class components, we use the 'render prop' and 'HOC' pattern to solve, stateful logic to
+*               common used.
+*
+*                  We can extract the common stateful logic with a custom Hook.
+*                  A custom Hook is a javascript function whose name starts with 'use' and that may call other Hook.
+*
+*                 we can use the Redux to solve the complex logic,
+*                 and the React provide a useReducer Hook to solve this mistake.
+*
+*              七、Hooks Api reference
+*                  Basic Hooks:
+*                       useState  pass any type value, can receive a function and to call.
+*                       useEffect
+*                       useContext
+*
+*                  Additional Hook:
+*                       useReducer    like  Redux   reducer
+*                       useCallBack
+*                       useMemo       memory HOC
+*                       useRef  can create a instance be used on DOM node, and by  instance .current get node
+*                       useImperativeHandle
+*                       useLayoutEffect  sync, include componentDidMount and componentDidUpdate
+*                       useDebugValue
+*
+*                 ps: there we can know in React to compare the new and old state by  "Object.is"  comparison algorithm
+*
+*
+*
+*
+*
+*
+*
+*
 *
 *
 *
