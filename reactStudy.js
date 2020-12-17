@@ -533,7 +533,12 @@
 *
 *              七、Hooks Api reference
 *                  Basic Hooks:
-*                       useState  pass any type value, can receive a function and to call.
+*                       useState
+*                       const [state,setState] = useState(0);
+*                       setState(prevState => prevState+1)  can incept a function  the argument is  previous state
+*
+*                       pass any type value, can receive a function and to call.
+*
 *                       useEffect
 *                       useContext
 *
@@ -547,6 +552,35 @@
 *                       useDebugValue
 *
 *                 ps: there we can know in React to compare the new and old state by  "Object.is"  comparison algorithm
+*
+*               八、Hook FAQ
+*                  You can see it every time, this is only note something that I think important
+*
+*
+*                  Performance Optimizations
+*
+*                  useEffect, we can pass the second argument with a array that contain it needs prop.
+*                  if(the, array every child don't changed, will skip this effect);
+*
+*
+*                  shouldComponentUpdate
+*
+*                  const Button = React.memo((prop)=>{
+*                     // your component 
+*                  })
+*
+*
+*        In event handle the setState is async, the state update end of the browser event;
+*        React update this.state until all components call setState() in
+*
+*
+*
+*
+*
+*
+*
+*
+*
 *
 *
 *
