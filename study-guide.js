@@ -13,7 +13,7 @@
 *         头部压缩
 *
 *   2.缓存策略：
-*       强缓存   expires Cache-Control: max-age:'321313131'
+*       强缓存   expires Cache-Control: max-age=321313131
 *       协商缓存   etag  if-none-match  last-modified  if-modified-since
 *       缓存的目的是为了 让页面加载更快，显示的更快，让用户有更好的体验   直接访问
 *        浏览器缓存 本地缓存

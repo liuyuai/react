@@ -12,6 +12,8 @@
 *   连词    conj   and  or  but
 *   感叹词  int
 *
+*   缩写    abbr
+*
 *
 *
 *
