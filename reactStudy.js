@@ -175,6 +175,8 @@
 *     we can using a technique known as "windowing" means "虚拟滚动"
 *     avoid reconciliation
 *
+*     shouldComponentUpdate
+*
 *   十、 Portals
 *    ReactDOM.createPortal(child,container)
 *     first argument 'child'  is  a React element
@@ -195,7 +197,9 @@
 *
 *   Main  introduce the createReactClass require('create-react-class');
 *   inside  we can you the  mixin;
+*
 *    Mixin  is  important to know  React and Vue difference
+*
 *
 *   十三、 React without JSX
 *   this part like the  八、JSX in depth
@@ -206,6 +210,8 @@
 *    e('div'，null,'Hello World'),
 *     document.getElementById('root');
 *    )
+*
+*
 *   十四、Reconciliation
 *    Motivation
 *
